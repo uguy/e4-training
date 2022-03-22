@@ -14,4 +14,5 @@ Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  lib/rental.jar
 Export-Package: com.bonitasoft.rental.core,
- com.opcoach.training.rental
+ com.opcoach.training.rental,
+ com.opcoach.training.rental.helpers

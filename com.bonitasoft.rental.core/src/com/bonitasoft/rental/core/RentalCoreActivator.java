@@ -17,12 +17,6 @@ public class RentalCoreActivator extends AbstractUIPlugin {
 	// The shared instance
 	private static RentalCoreActivator plugin;
 
-	private static RentalAgency rentalAgency = RentalAgencyGenerator.createSampleAgency();
-
-	public static RentalAgency getAgency() {
-		return rentalAgency;
-	}
-
 	/**
 	 * The constructor
 	 */
