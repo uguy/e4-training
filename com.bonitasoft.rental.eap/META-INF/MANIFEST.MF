@@ -24,7 +24,6 @@ Require-Bundle: javax.inject;bundle-version="0.0.0",
  org.eclipse.pde.spy.css;bundle-version="0.12.200",
  org.eclipse.pde.spy.model;bundle-version="0.12.200",
  org.eclipse.pde.spy.preferences;bundle-version="0.12.200",
- org.eclipse.swtbot.eclipse.spy;bundle-version="3.1.0",
  org.eclipse.tools.layout.spy;bundle-version="1.1.0",
  org.eclipse.e4.core.di.extensions;bundle-version="0.17.100",
  org.eclipse.e4.core.services;bundle-version="2.3.100"
