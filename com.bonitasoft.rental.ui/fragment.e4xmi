@@ -27,7 +27,7 @@
     <elements xsi:type="application:Addon" xmi:id="_bmZHAKnJEeyNXJ5HZ_q9mg" elementId="com.bonitasoft.rental.ui.addon.rentalAgency" contributionURI="bundleclass://com.bonitasoft.rental.ui/com.bonitasoft.rental.ui.addon.RentalAgencyAddon"/>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_K__xIKn4EeyMi_4GdAbTmw" featurename="snippets" parentElementId="xpath:/">
-    <elements xsi:type="advanced:Perspective" xmi:id="_UNs20Kn4EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.perspective.rental" selectedElement="_wMjuYKn4EeyMi_4GdAbTmw" label="Rental" iconURI="platform:/plugin/com.bonitasoft.rental.ui/icons/Agency.png">
+    <elements xsi:type="advanced:Perspective" xmi:id="_UNs20Kn4EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.perspective" selectedElement="_wMjuYKn4EeyMi_4GdAbTmw" label="Rental" iconURI="platform:/plugin/com.bonitasoft.rental.ui/icons/Agency.png">
       <children xsi:type="basic_1:PartSashContainer" xmi:id="_wMjuYKn4EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.container.main" selectedElement="_0HjkUKn4EeyMi_4GdAbTmw" horizontal="true">
         <children xsi:type="basic_1:PartStack" xmi:id="_0HjkUKn4EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.agencyContainer">
           <children xsi:type="advanced:Placeholder" xmi:id="_1HKnMKn4EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.partdescriptor.agencyView"/>
@@ -35,9 +35,6 @@
         <children xsi:type="basic_1:PartSashContainer" xmi:id="_-MHZgKn4EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.rentalContainer" selectedElement="_ANCvcKn5EeyMi_4GdAbTmw">
           <children xsi:type="basic_1:PartStack" xmi:id="_ANCvcKn5EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.rentalcontainer.details" selectedElement="_Aw974Kn5EeyMi_4GdAbTmw">
             <children xsi:type="advanced:Placeholder" xmi:id="_Aw974Kn5EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.partdescriptor.rentalProperty"/>
-          </children>
-          <children xsi:type="basic_1:PartStack" xmi:id="_EwZl4Kn5EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.rentalcontainer.jobs" selectedElement="_FG_g8Kn5EeyMi_4GdAbTmw">
-            <children xsi:type="advanced:Placeholder" xmi:id="_FG_g8Kn5EeyMi_4GdAbTmw" elementId="org.eclipse.ui.views.ProgressView"/>
           </children>
         </children>
       </children>
