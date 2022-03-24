@@ -2,9 +2,12 @@
 package com.bonitasoft.rental.ui.addon;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
@@ -13,6 +16,8 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
 import com.bonitasoft.rental.ui.RentalUIConstants;
+import com.bonitasoft.rental.ui.event.RentalEvents;
+import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.RentalAgency;
 import com.opcoach.training.rental.helpers.RentalAgencyGenerator;
 
@@ -48,4 +53,9 @@ public class RentalAgencyAddon implements RentalUIConstants {
 		return reg;
 	}
 
+	@Optional
+	@Inject
+	public void onNewRentalObject(@UIEventTopic(RentalEvents.RENTAL_CUSTOMER_COPY) Customer customer) {
+		System.out.println("Customer copy: " + customer);
+	}
 }

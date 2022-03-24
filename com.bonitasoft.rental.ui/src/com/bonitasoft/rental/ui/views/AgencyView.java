@@ -8,8 +8,10 @@ import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.di.extensions.Preference;
 import org.eclipse.e4.ui.di.Focus;
+import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.services.EMenuService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.layout.GridLayoutFactory;
@@ -20,7 +22,9 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Composite;
 
 import com.bonitasoft.rental.ui.RentalUIConstants;
+import com.bonitasoft.rental.ui.event.RentalEvents;
 import com.opcoach.training.rental.RentalAgency;
+import com.opcoach.training.rental.RentalObject;
 
 public class AgencyView implements RentalUIConstants {
 
@@ -62,6 +66,14 @@ public class AgencyView implements RentalUIConstants {
 
 		menuService.registerContextMenu(treeViewer.getControl(), "com.bonitasoft.rental.ui.popupmenu.sample");
 
+	}
+
+	@Optional
+	@Inject
+	public void onNewRentalObject(@UIEventTopic(RentalEvents.RENTAL_RENTAL_OBJECT_NEW) RentalObject rentalObject) {
+		if (treeViewer != null && !treeViewer.getControl().isDisposed()) {
+			treeViewer.refresh();
+		}
 	}
 
 	@Inject
