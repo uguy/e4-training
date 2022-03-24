@@ -40,13 +40,14 @@ public class RentalPropertyPart {
 	}
 
 	private void createContent(Composite parent) {
-		Composite mainGroup = new Composite(parent, SWT.NONE);
+
+		Composite rentalGroup = new Composite(parent, SWT.NONE);
 		GridLayout mainLayout = new GridLayout(2, false);
 		mainLayout.marginLeft = 10;
 		mainLayout.marginRight = 10;
-		mainGroup.setLayout(mainLayout);
+		rentalGroup.setLayout(mainLayout);
 
-		Group infoGroup = new Group(mainGroup, SWT.SHADOW_OUT);
+		Group infoGroup = new Group(rentalGroup, SWT.SHADOW_OUT);
 		GridLayout infoLayout = new GridLayout(2, true);
 		infoGroup.setLayout(infoLayout);
 		infoGroup.setText("Information");
@@ -57,7 +58,7 @@ public class RentalPropertyPart {
 		infoRenterLabel.setText("Renter: ");
 		infoRenterValue = new Label(infoGroup, SWT.NONE);
 
-		Group periodGroup = new Group(mainGroup, SWT.SHADOW_OUT);
+		Group periodGroup = new Group(rentalGroup, SWT.SHADOW_OUT);
 		GridLayout periodLayout = new GridLayout(2, true);
 		periodGroup.setLayout(periodLayout);
 		periodGroup.setText("Dates de location");
