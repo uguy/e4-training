@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Rcp
+Bundle-SymbolicName: com.bonitasoft.rental.rcp;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.bonitasoft.rental.rcp.Activator
+Bundle-Vendor: BONITASOFT
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.apache.felix.scr,
+ org.eclipse.equinox.event,
+ com.bonitasoft.rental.ui;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Automatic-Module-Name: com.bonitasoft.rental.rcp
+Bundle-ActivationPolicy: lazy
