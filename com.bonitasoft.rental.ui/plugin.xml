@@ -9,6 +9,12 @@
             name="Colors">
       </page>
    </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.bonitasoft.rental.ui.prefs.RentalPreferenceInitializer">
+      </initializer>
+   </extension>
 
 
 </plugin>
