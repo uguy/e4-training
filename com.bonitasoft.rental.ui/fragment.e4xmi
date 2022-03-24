@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/descriptor/basic" xmlns:basic_1="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmi:id="_yd4uUKkoEey3gYjdOAeJ5A">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_0XxoIKkoEey3gYjdOAeJ5A" featurename="descriptors" parentElementId="xpath:/">
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_5PPGUKkoEey3gYjdOAeJ5A" elementId="com.bonitasoft.rental.ui.partdescriptor.rentalProperty" label="Rental Property" category="Rental" contributionURI="bundleclass://com.bonitasoft.rental.ui/com.bonitasoft.rental.ui.views.RentalPropertyPart">
+      <tags>View</tags>
+    </elements>
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_1ABSoKnSEeyGL6f3Op_HpA" elementId="com.bonitasoft.rental.ui.partdescriptor.agencyView" label="Agency View" category="Rental" contributionURI="bundleclass://com.bonitasoft.rental.ui/com.bonitasoft.rental.ui.views.AgencyView">
+      <tags>View</tags>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_YMi2UKnJEeyNXJ5HZ_q9mg" featurename="addons" parentElementId="xpath:/">
+    <elements xsi:type="application:Addon" xmi:id="_bmZHAKnJEeyNXJ5HZ_q9mg" elementId="com.bonitasoft.rental.ui.addon.rentalAgency" contributionURI="bundleclass://com.bonitasoft.rental.ui/com.bonitasoft.rental.ui.addon.RentalAgencyAddon"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_K__xIKn4EeyMi_4GdAbTmw" featurename="snippets" parentElementId="xpath:/">
+    <elements xsi:type="advanced:Perspective" xmi:id="_UNs20Kn4EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.perspective.rental" selectedElement="_wMjuYKn4EeyMi_4GdAbTmw" label="Rental" iconURI="platform:/plugin/com.bonitasoft.rental.ui/icons/Agency.png">
+      <children xsi:type="basic_1:PartSashContainer" xmi:id="_wMjuYKn4EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.container.main" selectedElement="_0HjkUKn4EeyMi_4GdAbTmw" horizontal="true">
+        <children xsi:type="basic_1:PartStack" xmi:id="_0HjkUKn4EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.agencyContainer">
+          <children xsi:type="advanced:Placeholder" xmi:id="_1HKnMKn4EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.partdescriptor.agencyView"/>
+        </children>
+        <children xsi:type="basic_1:PartSashContainer" xmi:id="_-MHZgKn4EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.rentalContainer" selectedElement="_ANCvcKn5EeyMi_4GdAbTmw">
+          <children xsi:type="basic_1:PartStack" xmi:id="_ANCvcKn5EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.rentalcontainer.details" selectedElement="_Aw974Kn5EeyMi_4GdAbTmw">
+            <children xsi:type="advanced:Placeholder" xmi:id="_Aw974Kn5EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.partdescriptor.rentalProperty"/>
+          </children>
+          <children xsi:type="basic_1:PartStack" xmi:id="_EwZl4Kn5EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.rentalcontainer.jobs" selectedElement="_FG_g8Kn5EeyMi_4GdAbTmw">
+            <children xsi:type="advanced:Placeholder" xmi:id="_FG_g8Kn5EeyMi_4GdAbTmw" elementId="org.eclipse.ui.views.ProgressView"/>
+          </children>
+        </children>
+      </children>
+    </elements>
+  </fragments>
+</fragment:ModelFragments>
