@@ -13,6 +13,9 @@
         <tags>ViewMenu</tags>
         <children xsi:type="menu:DirectMenuItem" xmi:id="_N5NlMKtREeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.directmenuitem.sample" label="sample" contributionURI="bundleclass://com.bonitasoft.rental.ui/com.bonitasoft.rental.ui.command.SampleCommandHandler"/>
       </menus>
+      <toolbar xmi:id="_AWDI4KtWEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.toolbar.0">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_EkKIEKtWEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.handledtoolitem.sample" label="sample" iconURI="platform:/plugin/com.bonitasoft.rental.ui/icons/Agency.png" command="_0IHbIKtPEeyFZ7Ddm8oJnA"/>
+      </toolbar>
     </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_YMi2UKnJEeyNXJ5HZ_q9mg" featurename="addons" parentElementId="xpath:/">
@@ -50,5 +53,17 @@
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_Y9YV4KtUEeyFZ7Ddm8oJnA" featurename="handlers" parentElementId="xpath:/">
     <elements xsi:type="commands:Handler" xmi:id="_qiCcQKtQEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.handler.sample" contributionURI="bundleclass://com.bonitasoft.rental.ui/com.bonitasoft.rental.ui.command.SampleCommandHandler" command="_0IHbIKtPEeyFZ7Ddm8oJnA"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_UQfeEKtWEeyFZ7Ddm8oJnA" featurename="toolBarContributions" parentElementId="xpath:/">
+    <elements xsi:type="menu:ToolBarContribution" xmi:id="_VxunUKtWEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.toolbarcontribution.0" parentId="org.eclipse.ui.main.toolbar" positionInParent="after=additions">
+      <children xsi:type="menu:HandledToolItem" xmi:id="_dyYrEKtWEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.handledtoolitem.rentals" label="Rentals" iconURI="platform:/plugin/com.bonitasoft.rental.ui/icons/Agency.png" command="_0IHbIKtPEeyFZ7Ddm8oJnA"/>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_IL_U8KtXEeyFZ7Ddm8oJnA" featurename="trimContributions" parentElementId="xpath:/">
+    <elements xsi:type="menu:TrimContribution" xmi:id="_K3q4EKtXEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.trimcontribution.0" parentId="org.eclipse.ui.main.toolbar" positionInParent="after=additions">
+      <children xsi:type="menu:ToolBar" xmi:id="_LgQiEKtXEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.toolbar.1">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_Shr9cKtXEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.handledtoolitem.agency" label="Agency" iconURI="platform:/plugin/com.bonitasoft.rental.ui/icons/Agency.png" command="_0IHbIKtPEeyFZ7Ddm8oJnA"/>
+      </children>
+    </elements>
   </fragments>
 </fragment:ModelFragments>
