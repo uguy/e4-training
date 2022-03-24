@@ -14,7 +14,8 @@ public class RentalColorPreferencePage extends FieldEditorPreferencePage impleme
 	@Override
 	protected void createFieldEditors() {
 		addField(new ColorFieldEditor(PREF_CUSTOMER_COLOR, "Couleur pour client", getFieldEditorParent()));
-
+		addField(new ColorFieldEditor(PREF_RENTAL_COLOR, "Couleur pour location", getFieldEditorParent()));
+		addField(new ColorFieldEditor(PREF_RENTAL_OBJECT_COLOR, "Couleur pour objet à louer", getFieldEditorParent()));
 	}
 
 }

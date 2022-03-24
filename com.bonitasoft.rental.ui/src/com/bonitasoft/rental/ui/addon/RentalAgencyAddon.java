@@ -3,9 +3,12 @@ package com.bonitasoft.rental.ui.addon;
 
 import javax.annotation.PostConstruct;
 
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
@@ -20,7 +23,11 @@ public class RentalAgencyAddon implements RentalUIConstants {
 
 		RentalAgency rentalAgency = RentalAgencyGenerator.createSampleAgency();
 		context.set(RentalAgency.class, rentalAgency);
+
 		context.set(RENTAL_UI_IMG_REGISTRY, getLocalImageRegistry());
+
+		IPreferenceStore prefStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, PLUGIN_ID);
+		context.set(RENTAL_UI_PREF_STORE, prefStore);
 	}
 
 	ImageRegistry getLocalImageRegistry() {

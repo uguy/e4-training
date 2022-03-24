@@ -6,14 +6,16 @@ import java.util.Collection;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.resource.ColorRegistry;
 import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.jface.resource.StringConverter;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
 
 import com.bonitasoft.rental.ui.RentalUIConstants;
 import com.bonitasoft.rental.ui.views.RentalProvider.Node.NodeType;
@@ -26,6 +28,10 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	@Inject
 	@Named(RentalUIConstants.RENTAL_UI_IMG_REGISTRY)
 	private ImageRegistry imageRegistry;
+
+	@Inject
+	@Named(RentalUIConstants.RENTAL_UI_PREF_STORE)
+	private IPreferenceStore prefStore;
 
 	@Override
 	public Image getImage(Object element) {
@@ -46,6 +52,21 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 			}
 		}
 		return super.getImage(element);
+	}
+
+	private Color getPrefColor(String key) {
+		String rgbKey = prefStore.getString(key);
+
+		ColorRegistry colorRegistry = JFaceResources.getColorRegistry();
+		Color result = colorRegistry.get(rgbKey);
+		if (result == null) {
+			// Get value in pref store
+			colorRegistry.put(rgbKey, StringConverter.asRGB(rgbKey));
+			result = colorRegistry.get(rgbKey);
+		}
+
+		return result;
+
 	}
 
 	@Override
@@ -165,13 +186,13 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 			Node node = (Node) element;
 			switch (node.getNodeType()) {
 			case Customers: {
-				return Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
+				return getPrefColor(RentalUIConstants.PREF_CUSTOMER_COLOR);
 			}
 			case Rentals: {
-				return Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
+				return getPrefColor(RentalUIConstants.PREF_RENTAL_COLOR);
 			}
 			case RentalObjects: {
-				return Display.getCurrent().getSystemColor(SWT.COLOR_CYAN);
+				return getPrefColor(RentalUIConstants.PREF_RENTAL_OBJECT_COLOR);
 			}
 			default:
 				throw new IllegalArgumentException("Unexpected value: " + node.getNodeType());
