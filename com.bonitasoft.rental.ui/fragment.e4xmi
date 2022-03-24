@@ -6,7 +6,6 @@
     </elements>
     <elements xsi:type="basic:PartDescriptor" xmi:id="_1ABSoKnSEeyGL6f3Op_HpA" elementId="com.bonitasoft.rental.ui.partdescriptor.agencyView" label="Agency View  (Hugues)" category="Rental" contributionURI="bundleclass://com.bonitasoft.rental.ui/com.bonitasoft.rental.ui.views.AgencyView">
       <tags>View</tags>
-      <handlers xmi:id="_qiCcQKtQEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.handler.sample" contributionURI="bundleclass://com.bonitasoft.rental.ui/com.bonitasoft.rental.ui.command.SampleCommandHandler" command="_0IHbIKtPEeyFZ7Ddm8oJnA"/>
       <menus xsi:type="menu:PopupMenu" xmi:id="_Hq9QAKtNEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.popupmenu.sample" label="sample" tooltip="sample">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_Yo3ioKtNEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.handledmenuitem.sample" label="sample" command="_0IHbIKtPEeyFZ7Ddm8oJnA"/>
       </menus>
@@ -38,5 +37,18 @@
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_vadZMKtPEeyFZ7Ddm8oJnA" featurename="commands" parentElementId="xpath:/">
     <elements xsi:type="commands:Command" xmi:id="_0IHbIKtPEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.command.sample" commandName="sample command"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_yPj2sKtSEeyFZ7Ddm8oJnA" featurename="menuContributions" parentElementId="xpath:/">
+    <elements xsi:type="menu:MenuContribution" xmi:id="_0QbiQKtSEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.menucontribution.sample" positionInParent="after=additions" parentId="org.eclipse.ui.main.menu">
+      <children xsi:type="menu:Menu" xmi:id="_FI77AKtUEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.menu.rental" label="Rental">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_JfDcIKtTEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.handledmenuitem.sample" label="sample" command="_0IHbIKtPEeyFZ7Ddm8oJnA"/>
+      </children>
+    </elements>
+    <elements xsi:type="menu:MenuContribution" xmi:id="_pEs-wKtUEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.menucontribution.0" positionInParent="after=additions" parentId="popup">
+      <children xsi:type="menu:HandledMenuItem" xmi:id="_wIApcKtUEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.handledmenuitem.sample" label="sample" command="_0IHbIKtPEeyFZ7Ddm8oJnA"/>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_Y9YV4KtUEeyFZ7Ddm8oJnA" featurename="handlers" parentElementId="xpath:/">
+    <elements xsi:type="commands:Handler" xmi:id="_qiCcQKtQEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.handler.sample" contributionURI="bundleclass://com.bonitasoft.rental.ui/com.bonitasoft.rental.ui.command.SampleCommandHandler" command="_0IHbIKtPEeyFZ7Ddm8oJnA"/>
   </fragments>
 </fragment:ModelFragments>
