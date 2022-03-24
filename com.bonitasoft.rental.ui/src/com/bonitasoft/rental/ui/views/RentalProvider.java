@@ -2,6 +2,7 @@ package com.bonitasoft.rental.ui.views;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -141,6 +142,23 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 		private RentalAgency agency;
 		private NodeType nodeType;
 
+		@Override
+		public int hashCode() {
+			return Objects.hash(agency, nodeType);
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Node other = (Node) obj;
+			return Objects.equals(agency, other.agency) && nodeType == other.nodeType;
+		}
+
 		enum NodeType {
 			Customers, Rentals, RentalObjects
 		}
@@ -173,6 +191,7 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 				throw new IllegalArgumentException("Unexpected value: " + nodeType);
 			}
 		}
+
 	}
 
 	@Override
