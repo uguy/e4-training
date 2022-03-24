@@ -22,6 +22,9 @@
         <children xsi:type="menu:HandledToolItem" xmi:id="_EkKIEKtWEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.handledtoolitem.sample" label="sample" iconURI="platform:/plugin/com.bonitasoft.rental.ui/icons/Agency.png" command="_0IHbIKtPEeyFZ7Ddm8oJnA"/>
       </toolbar>
     </elements>
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_B2kzwKuTEeyJvps_m0crfg" elementId="com.bonitasoft.rental.ui.partdescriptor.customer" label="Customer" iconURI="platform:/plugin/com.bonitasoft.rental.ui/icons/Customers.png" category="Rental" contributionURI="bundleclass://com.bonitasoft.rental.ui/com.bonitasoft.rental.ui.views.CustomerPropertyPart">
+      <tags>View</tags>
+    </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_YMi2UKnJEeyNXJ5HZ_q9mg" featurename="addons" parentElementId="xpath:/">
     <elements xsi:type="application:Addon" xmi:id="_bmZHAKnJEeyNXJ5HZ_q9mg" elementId="com.bonitasoft.rental.ui.addon.rentalAgency" contributionURI="bundleclass://com.bonitasoft.rental.ui/com.bonitasoft.rental.ui.addon.RentalAgencyAddon"/>
@@ -35,6 +38,9 @@
         <children xsi:type="basic_1:PartSashContainer" xmi:id="_-MHZgKn4EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.rentalContainer" selectedElement="_ANCvcKn5EeyMi_4GdAbTmw">
           <children xsi:type="basic_1:PartStack" xmi:id="_ANCvcKn5EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.rentalcontainer.details" selectedElement="_Aw974Kn5EeyMi_4GdAbTmw">
             <children xsi:type="advanced:Placeholder" xmi:id="_Aw974Kn5EeyMi_4GdAbTmw" elementId="com.bonitasoft.rental.ui.partdescriptor.rentalProperty"/>
+          </children>
+          <children xsi:type="basic_1:PartStack" xmi:id="_PL4oAKuTEeyJvps_m0crfg" elementId="com.bonitasoft.rental.ui.partstack.customer.details">
+            <children xsi:type="advanced:Placeholder" xmi:id="_TQaNYKuTEeyJvps_m0crfg" elementId="com.bonitasoft.rental.ui.partdescriptor.customer"/>
           </children>
         </children>
       </children>
