@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="ASCII"?>
-<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/descriptor/basic" xmlns:basic_1="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_yd4uUKkoEey3gYjdOAeJ5A">
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/descriptor/basic" xmlns:basic_1="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmlns:ui="http://www.eclipse.org/ui/2010/UIModel/application/ui" xmi:id="_yd4uUKkoEey3gYjdOAeJ5A">
+  <imports xsi:type="commands:Command" xmi:id="_6gslcKtdEeyFZ7Ddm8oJnA" elementId="org.eclipse.ui.edit.copy"/>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_0XxoIKkoEey3gYjdOAeJ5A" featurename="descriptors" parentElementId="xpath:/">
     <elements xsi:type="basic:PartDescriptor" xmi:id="_5PPGUKkoEey3gYjdOAeJ5A" elementId="com.bonitasoft.rental.ui.partdescriptor.rentalProperty" label="Rental Property (Hugues)" category="Rental" contributionURI="bundleclass://com.bonitasoft.rental.ui/com.bonitasoft.rental.ui.views.RentalPropertyPart">
       <tags>View</tags>
     </elements>
     <elements xsi:type="basic:PartDescriptor" xmi:id="_1ABSoKnSEeyGL6f3Op_HpA" elementId="com.bonitasoft.rental.ui.partdescriptor.agencyView" label="Agency View  (Hugues)" category="Rental" contributionURI="bundleclass://com.bonitasoft.rental.ui/com.bonitasoft.rental.ui.views.AgencyView">
       <tags>View</tags>
+      <handlers xmi:id="_2dmuAKteEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.handler.0" contributionURI="bundleclass://com.bonitasoft.rental.ui/com.bonitasoft.rental.ui.command.CopyCustomerCommandHandler" command="_6gslcKtdEeyFZ7Ddm8oJnA"/>
       <menus xsi:type="menu:PopupMenu" xmi:id="_Hq9QAKtNEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.popupmenu.sample" label="sample" tooltip="sample">
         <children xsi:type="menu:HandledMenuItem" xmi:id="_Yo3ioKtNEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.handledmenuitem.sample" label="sample" command="_0IHbIKtPEeyFZ7Ddm8oJnA"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_YH564KteEeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.handledmenuitem.customer.copy" label="Copy Customer" iconURI="platform:/plugin/com.bonitasoft.rental.ui/icons/Customers.png" command="_6gslcKtdEeyFZ7Ddm8oJnA">
+          <visibleWhen xsi:type="ui:ImperativeExpression" xmi:id="_eUCtAKteEeyFZ7Ddm8oJnA" contributionURI="bundleclass://com.bonitasoft.rental.ui/com.bonitasoft.rental.ui.command.CopyCustomerCommandHandler"/>
+        </children>
       </menus>
       <menus xmi:id="_LfNn8KtREeyFZ7Ddm8oJnA" elementId="com.bonitasoft.rental.ui.menu.sample" label="sample">
         <tags>ViewMenu</tags>
