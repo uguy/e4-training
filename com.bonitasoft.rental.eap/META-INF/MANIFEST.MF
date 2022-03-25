@@ -18,13 +18,6 @@ Require-Bundle: javax.inject;bundle-version="0.0.0",
  org.eclipse.osgi.services;bundle-version="3.10.200",
  com.bonitasoft.rental.core;bundle-version="1.0.0",
  com.bonitasoft.rental.ui;bundle-version="1.0.0",
- org.eclipse.pde.spy.bundle;bundle-version="0.12.100",
- org.eclipse.pde.spy.context;bundle-version="1.0.200",
- org.eclipse.pde.spy.core;bundle-version="1.0.100",
- org.eclipse.pde.spy.css;bundle-version="0.12.200",
- org.eclipse.pde.spy.model;bundle-version="0.12.200",
- org.eclipse.pde.spy.preferences;bundle-version="0.12.200",
- org.eclipse.tools.layout.spy;bundle-version="1.1.0",
  org.eclipse.e4.core.di.extensions;bundle-version="0.17.100",
  org.eclipse.e4.core.services;bundle-version="2.3.100"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
