@@ -137,7 +137,6 @@ public class RentalAgencyAddon implements RentalUIConstants {
 
 		context.set(Palette.class, paletteManager.get(paletteId));
 
-		// TODO UI Event
 		broker.post(RentalEvents.RENTAL_PALETTE_CHANGED, paletteId);
 	}
 }
