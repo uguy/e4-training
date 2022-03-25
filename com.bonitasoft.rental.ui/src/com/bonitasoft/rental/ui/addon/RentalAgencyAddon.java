@@ -1,24 +1,30 @@
 
 package com.bonitasoft.rental.ui.addon;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
 import com.bonitasoft.rental.ui.RentalUIConstants;
 import com.bonitasoft.rental.ui.event.RentalEvents;
+import com.bonitasoft.rental.ui.palette.Palette;
 import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.RentalAgency;
 import com.opcoach.training.rental.helpers.RentalAgencyGenerator;
@@ -35,6 +41,8 @@ public class RentalAgencyAddon implements RentalUIConstants {
 
 		IPreferenceStore prefStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, PLUGIN_ID);
 		context.set(RENTAL_UI_PREF_STORE, prefStore);
+
+		context.set(PALETTE_MANAGER, getPaletteManager(context, extensionRegistry));
 
 		IConfigurationElement[] configurationElements = extensionRegistry
 				.getConfigurationElementsFor("org.eclipse.e4.workbench.model");
@@ -60,6 +68,33 @@ public class RentalAgencyAddon implements RentalUIConstants {
 
 		}
 
+	}
+
+	private Map<String, Palette> getPaletteManager(IEclipseContext context, IExtensionRegistry extensionRegistry) {
+		Map<String, Palette> paletteManager = new HashMap<>();
+		IConfigurationElement[] configurationElements = extensionRegistry
+				.getConfigurationElementsFor("com.bonitasoft.rental.ui.palette");
+		for (int i = 0; i < configurationElements.length; i++) {
+			try {
+				IConfigurationElement element = configurationElements[i];
+				String name = element.getName();
+				Palette palette = new Palette();
+				palette.setId(element.getAttribute("id"));
+				palette.setName(element.getAttribute("name"));
+				String paletteClass = element.getAttribute("paletteClass");
+				Bundle bundle = FrameworkUtil.getBundle(getClass());
+				Class<?> paletteType = bundle.loadClass(paletteClass);
+				IColorProvider paletteProvider = (IColorProvider) ContextInjectionFactory.make(paletteType, context);
+				palette.setColorProvider(paletteProvider);
+
+				System.out.println("Loading palette: " + palette.getName());
+				paletteManager.put(palette.getId(), palette);
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return paletteManager;
 	}
 
 	ImageRegistry getLocalImageRegistry() {

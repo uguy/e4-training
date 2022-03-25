@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="palette" name="palette" schema="schema/palette.exsd"/>
    <extension
          point="com.opcoach.e4.preferences.e4PreferencePages">
       <page
@@ -14,6 +15,19 @@
       <initializer
             class="com.bonitasoft.rental.ui.prefs.RentalPreferenceInitializer">
       </initializer>
+   </extension>
+   <extension
+         point="com.bonitasoft.rental.ui.palette">
+      <palette
+            id="com.bonitasoft.rental.ui.uglyPalette"
+            name="Ugly Palette"
+            paletteClass="com.bonitasoft.rental.ui.palette.UglyPalette">
+      </palette>
+      <palette
+            id="com.bonitasoft.rental.ui.defaultPalette"
+            name="Default Palette"
+            paletteClass="com.bonitasoft.rental.ui.palette.DefaultPalette">
+      </palette>
    </extension>
 
 
