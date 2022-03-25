@@ -4,6 +4,8 @@ package com.bonitasoft.rental.ui.addon;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
@@ -24,7 +26,7 @@ import com.opcoach.training.rental.helpers.RentalAgencyGenerator;
 public class RentalAgencyAddon implements RentalUIConstants {
 
 	@PostConstruct
-	public void applicationStarted(IEclipseContext context) {
+	public void applicationStarted(IEclipseContext context, IExtensionRegistry extensionRegistry) {
 
 		RentalAgency rentalAgency = RentalAgencyGenerator.createSampleAgency();
 		context.set(RentalAgency.class, rentalAgency);
@@ -33,6 +35,24 @@ public class RentalAgencyAddon implements RentalUIConstants {
 
 		IPreferenceStore prefStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, PLUGIN_ID);
 		context.set(RENTAL_UI_PREF_STORE, prefStore);
+
+		IConfigurationElement[] configurationElements = extensionRegistry
+				.getConfigurationElementsFor("org.eclipse.e4.workbench.model");
+		for (int i = 0; i < configurationElements.length; i++) {
+			IConfigurationElement element = configurationElements[i];
+
+			if ("processor".equals(element.getName())) {
+				System.out.println(String.format("Model %s class %s found in  %s", element.getName(),
+						element.getAttribute("class"), element.getNamespaceIdentifier()));
+			} else if ("fragment".equals(element.getName())) {
+				System.out.println(String.format("Model %s uri %s found in  %s", element.getName(),
+						element.getAttribute("uri"), element.getNamespaceIdentifier()));
+			} else {
+				System.out.println(
+						String.format("Model %s found in  %s", element.getName(), element.getNamespaceIdentifier()));
+			}
+		}
+
 	}
 
 	ImageRegistry getLocalImageRegistry() {
