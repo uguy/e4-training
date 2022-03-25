@@ -6,6 +6,7 @@ import java.util.Collection;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -25,6 +26,7 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	@Named(RentalUIConstants.RENTAL_UI_IMG_REGISTRY)
 	private ImageRegistry imageRegistry;
 
+	@Optional
 	@Inject
 	private Palette palette;
 
@@ -106,10 +108,8 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 
 	@Override
 	public Object getParent(Object element) {
-		if (element instanceof RentalTreeNode) {
-			return ((RentalTreeNode) element).getAgency().getCustomers().toArray();
-		}
-		return null;
+		return element instanceof RentalTreeNode ? ((RentalTreeNode) element).getAgency().getCustomers().toArray()
+				: null;
 	}
 
 	@Override
@@ -119,11 +119,11 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 
 	@Override
 	public Color getForeground(Object element) {
-		return palette.getColorProvider().getForeground(element);
+		return palette == null ? null : palette.getColorProvider().getForeground(element);
 	}
 
 	@Override
 	public Color getBackground(Object element) {
-		return palette.getColorProvider().getBackground(element);
+		return palette == null ? null : palette.getColorProvider().getBackground(element);
 	}
 }

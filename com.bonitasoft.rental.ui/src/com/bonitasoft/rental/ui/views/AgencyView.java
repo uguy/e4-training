@@ -85,6 +85,14 @@ public class AgencyView implements RentalUIConstants {
 		}
 	}
 
+	@Optional
+	@Inject
+	public void onPrefPaletteChanged(@UIEventTopic(RentalEvents.RENTAL_PALETTE_CHANGED) String paletteId) {
+		if (treeViewer != null && !treeViewer.getControl().isDisposed()) {
+			treeViewer.refresh();
+		}
+	}
+
 	@PreDestroy
 	public void dispose() {
 	}

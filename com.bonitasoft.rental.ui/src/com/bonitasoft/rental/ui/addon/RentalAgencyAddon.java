@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
@@ -13,6 +14,8 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.core.di.extensions.Preference;
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -42,8 +45,15 @@ public class RentalAgencyAddon implements RentalUIConstants {
 		IPreferenceStore prefStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, PLUGIN_ID);
 		context.set(RENTAL_UI_PREF_STORE, prefStore);
 
-		context.set(PALETTE_MANAGER, getPaletteManager(context, extensionRegistry));
+		Map<String, Palette> paletteManager = getPaletteManager(context, extensionRegistry);
+		context.set(PALETTE_MANAGER, paletteManager);
+		context.set(Palette.class, paletteManager.get(DEFAULT_PALETTE));
 
+		traceExtension(extensionRegistry);
+
+	}
+
+	private void traceExtension(IExtensionRegistry extensionRegistry) {
 		IConfigurationElement[] configurationElements = extensionRegistry
 				.getConfigurationElementsFor("org.eclipse.e4.workbench.model");
 		for (int i = 0; i < configurationElements.length; i++) {
@@ -67,20 +77,19 @@ public class RentalAgencyAddon implements RentalUIConstants {
 			}
 
 		}
-
 	}
 
 	private Map<String, Palette> getPaletteManager(IEclipseContext context, IExtensionRegistry extensionRegistry) {
 		Map<String, Palette> paletteManager = new HashMap<>();
+
 		IConfigurationElement[] configurationElements = extensionRegistry
 				.getConfigurationElementsFor("com.bonitasoft.rental.ui.palette");
-		for (int i = 0; i < configurationElements.length; i++) {
+		for (IConfigurationElement element : configurationElements) {
 			try {
-				IConfigurationElement element = configurationElements[i];
-				String name = element.getName();
 				Palette palette = new Palette();
 				palette.setId(element.getAttribute("id"));
 				palette.setName(element.getAttribute("name"));
+
 				String paletteClass = element.getAttribute("paletteClass");
 				Bundle bundle = FrameworkUtil.getBundle(getClass());
 				Class<?> paletteType = bundle.loadClass(paletteClass);
@@ -89,11 +98,11 @@ public class RentalAgencyAddon implements RentalUIConstants {
 
 				System.out.println("Loading palette: " + palette.getName());
 				paletteManager.put(palette.getId(), palette);
+
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
 		}
-
 		return paletteManager;
 	}
 
@@ -119,5 +128,16 @@ public class RentalAgencyAddon implements RentalUIConstants {
 	@Inject
 	public void onNewRentalObject(@UIEventTopic(RentalEvents.RENTAL_CUSTOMER_COPY) Customer customer) {
 		System.out.println("Customer copy: " + customer);
+	}
+
+	@Optional
+	@Inject
+	public void onPrefPaletteChanged(@Preference(value = PREF_PALETTE) String paletteId, IEclipseContext context,
+			@Named(PALETTE_MANAGER) Map<String, Palette> paletteManager, IEventBroker broker) {
+
+		context.set(Palette.class, paletteManager.get(paletteId));
+
+		// TODO UI Event
+		broker.post(RentalEvents.RENTAL_PALETTE_CHANGED, paletteId);
 	}
 }
