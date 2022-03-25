@@ -41,16 +41,23 @@ public class RentalAgencyAddon implements RentalUIConstants {
 		for (int i = 0; i < configurationElements.length; i++) {
 			IConfigurationElement element = configurationElements[i];
 
-			if ("processor".equals(element.getName())) {
-				System.out.println(String.format("Model %s class %s found in  %s", element.getName(),
-						element.getAttribute("class"), element.getNamespaceIdentifier()));
-			} else if ("fragment".equals(element.getName())) {
-				System.out.println(String.format("Model %s uri %s found in  %s", element.getName(),
-						element.getAttribute("uri"), element.getNamespaceIdentifier()));
-			} else {
-				System.out.println(
-						String.format("Model %s found in  %s", element.getName(), element.getNamespaceIdentifier()));
+			String name = element.getName();
+			String namespaceIdentifier = element.getNamespaceIdentifier();
+			switch (name) {
+			case "processor": {
+				System.out.println(String.format("Model %s class %s found in  %s", name, element.getAttribute("class"),
+						namespaceIdentifier));
+				break;
 			}
+			case "fragment": {
+				System.out.println(String.format("Model %s uri %s found in  %s", name, element.getAttribute("uri"),
+						namespaceIdentifier));
+				break;
+			}
+			default:
+				System.out.println(String.format("Model %s found in  %s", name, namespaceIdentifier));
+			}
+
 		}
 
 	}
